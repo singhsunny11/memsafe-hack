@@ -1,0 +1,93 @@
+═══════════════════════════════════════════════════════════════
+  RATE LIMIT / QUOTA EXCEEDED ERROR - EXPLANATION & FIX
+═══════════════════════════════════════════════════════════════
+
+ERROR MESSAGE:
+"❌ Rate limit or quota exceeded"
+
+WHAT THIS MEANS:
+───────────────────────────────────────────────────────────────
+Your OpenAI API key is VALID and working, but you've hit one of these limits:
+
+1. FREE TIER CREDITS EXHAUSTED
+   - New OpenAI accounts get $5 free credits
+   - Once used up, you need to add billing to continue
+   - This is the most common cause
+
+2. RATE LIMITS
+   - Too many requests in a short time period
+   - Usually resets after a few minutes
+   - Less common than quota issues
+
+3. MONTHLY QUOTA LIMITS
+   - If you set spending limits, you may have hit them
+   - Check your billing settings
+
+HOW TO FIX:
+───────────────────────────────────────────────────────────────
+
+OPTION 1: Check Your Usage (Recommended First Step)
+───────────────────────────────────────────────────────────────
+1. Go to: https://platform.openai.com/usage
+2. Log in with your OpenAI account
+3. Check:
+   - How much you've used
+   - How much is remaining
+   - When limits reset
+
+If you see $0.00 remaining → You've used all free credits
+
+OPTION 2: Add Billing (If Free Credits Exhausted)
+───────────────────────────────────────────────────────────────
+1. Go to: https://platform.openai.com/account/billing
+2. Click "Add payment method"
+3. Add a credit card
+4. Set a spending limit if you want (e.g., $10/month)
+5. Your account will have access to paid API usage
+
+COST INFO:
+- GPT-3.5-turbo: ~$0.50-1.50 per 1M tokens (very cheap!)
+- GPT-4o: ~$2.50-10 per 1M tokens (more expensive)
+- For code analysis, GPT-3.5-turbo works great and is much cheaper
+
+OPTION 3: Wait and Retry (If It's Rate Limits)
+───────────────────────────────────────────────────────────────
+If it's a rate limit (not quota):
+- Wait 5-10 minutes
+- Try again
+- Rate limits reset quickly
+
+OPTION 4: Use a Different API Key
+───────────────────────────────────────────────────────────────
+If you have another OpenAI account:
+1. Get a new API key from that account
+2. Update your .env file:
+   OPENAI_API_KEY=sk-new-key-here
+3. Restart the Streamlit app
+
+HOW TO PREVENT THIS:
+───────────────────────────────────────────────────────────────
+1. Use GPT-3.5-turbo instead of GPT-4o (much cheaper)
+2. Monitor usage at https://platform.openai.com/usage
+3. Set spending limits in billing settings
+4. Use the app efficiently (don't run unnecessary analyses)
+
+QUICK CHECKLIST:
+───────────────────────────────────────────────────────────────
+□ Check usage: https://platform.openai.com/usage
+□ If $0 remaining → Add billing or get new account
+□ If credits available → Wait 5 min and retry (rate limit)
+□ Make sure you're using GPT-3.5-turbo (cheaper option)
+□ Verify your .env file has correct API key
+
+STILL NOT WORKING?
+───────────────────────────────────────────────────────────────
+1. Verify API key is correct in .env file
+2. Check for typos or extra spaces
+3. Restart the Streamlit app
+4. Check OpenAI status: https://status.openai.com
+
+═══════════════════════════════════════════════════════════════
+  Most likely: Free credits exhausted → Need to add billing
+═══════════════════════════════════════════════════════════════
+
